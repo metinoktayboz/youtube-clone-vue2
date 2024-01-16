@@ -1,0 +1,31 @@
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+  /* Color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Color of the thumb */
+  border-radius: 4px;
+  /* Border radius for the thumb */
+}
+
+main {
+
+
+  scrollbar-width: thin;
+  scrollbar-color: #888 #0f0f0f;
+
+  margin: 0;
+  /* Remove default margin */
+  padding: 0;
+  /* Remove default padding */
+  height: 100vh;
+  overflow-x: hidden;
+  /* Prevent horizontal overflow */
+  background-color: #0f0f0f;
+}

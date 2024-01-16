@@ -1,0 +1,24 @@
+.v-application {
+  background-color: #0f0f0f !important;
+  /* For WebKit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: inherit; /* Color of the track */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the thumb */
+    border-radius: 4px; /* Border radius for the thumb */
+  }
+
+  /* For Firefox */
+  /* These properties might not work on all Firefox versions */
+  /* You might need to use `-moz-` prefixes for older versions */
+  /* Or check for compatibility */
+  /* Refer to MDN Web Docs for more information */
+  scrollbar-width: thin;
+  scrollbar-color: #888 inherit;
+}
