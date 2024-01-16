@@ -29,7 +29,7 @@
     }
 
     .v-list-item__content {
-      padding: 0 24px 0 0;
+      //padding: 0 24px 0 0;
       min-height: 100px;
       height: auto;
       display: block;
@@ -44,7 +44,7 @@
 
         .channel-name {
           width: 100%;
-          max-height: 20px;
+          //max-height: 20px;
           height: 100%;
           display: flex;
           flex-direction: row;
@@ -52,7 +52,7 @@
           align-self: flex-start;
 
           a {
-            max-height: 20px;
+            //max-height: 20px;
             color: rgb(170, 170, 170);
             text-decoration: none;
           }
@@ -78,17 +78,13 @@
         font-weight: 500;
         margin: 12px 0 4px 0;
         cursor: pointer;
-        height: 44px;
         overflow: hidden;
         display: flex;
 
         a {
           text-decoration: none;
           color: rgb(241, 241, 241);
-          width: 238px;
-          height: 44px;
           display: flex;
-          align-items: center;
         }
       }
     }

@@ -13,7 +13,7 @@
         </v-col>
         <v-col class="mid-header">
           <v-text-field
-            class="search-bar"
+            class="search-bar hidden-xs-only"
             placeholder="Ara"
             color="blue darken-3"
             outlined
@@ -22,20 +22,24 @@
             hide-details
           ></v-text-field>
 
-          <span class="search-icon mdi mdi-magnify"></span>
+          <span class="search-icon mdi mdi-magnify hidden-xs-only"></span>
 
-          <v-btn class="microphone-icon" icon>
+          <v-btn class="microphone-icon hidden-sm-and-down" icon>
             <v-icon class="mdi mdi-microphone"></v-icon>
           </v-btn>
         </v-col>
 
         <v-col class="right-header">
-          <v-btn class="video-icon" icon>
+          <v-btn class="video-icon hidden-xs-only" icon>
             <v-icon class="mdi mdi-video-plus-outline"></v-icon>
           </v-btn>
 
-          <v-btn class="bell-icon" icon>
+          <v-btn class="bell-icon hidden-xs-only" icon>
             <v-icon class="mdi mdi-bell-outline"></v-icon>
+          </v-btn>
+
+          <v-btn class="hidden-sm-and-up" icon>
+            <v-icon class="mdi mdi-magnify"></v-icon>
           </v-btn>
 
           <div class="profile-icon" icon>
@@ -45,9 +49,8 @@
       </div>
     </v-app-bar>
     <v-navigation-drawer
-      v-model="drawer"
       :mini-variant.sync="mini"
-      class="no-transition"
+      class="no-transition hidden-xs-only"
       permanent
       clipped
       dark
@@ -158,7 +161,7 @@ export default {
 
   data() {
     return {
-      drawer: true,
+      drawer: false,
       mini: false,
       isExpanded: true,
       dynamicWidth: window.innerWidth,
@@ -219,7 +222,7 @@ export default {
 
   watch: {
     dynamicWidth() {
-      if (this.dynamicWidth < 1313) {
+      if (window.innerWidth <= 1331) {
         this.mini = true;
       }
     },

@@ -8,13 +8,16 @@
   background-color: #0f0f0f;
 }
 
-.v-toolbar__content {
-  padding-top: 0;
-  padding-bottom: 0;
-  max-height: 56px;
-  display: flex;
-  align-items: center;
+.v-app-bar {
+  .v-toolbar__content {
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 56px;
+    display: flex;
+    align-items: center;
+  }
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -66,6 +69,7 @@
   }
 
   .search-bar {
+    min-width: 150px;
     height: 40px;
     width: 100%;
     max-width: 536px;

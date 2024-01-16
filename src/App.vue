@@ -1,8 +1,23 @@
 <template>
   <v-app>
     <Header></Header>
-    <v-main>
+    <v-main :class="{ 'pl-3': $vuetify.breakpoint.width < 600 }">
       <router-view />
+      <v-bottom-navigation
+        class="align-center justify-space-around hidden-sm-and-up"
+        background-color="#0f0f0f"
+        fixed
+      >
+        <v-btn
+          color="rgb(15, 15, 15)"
+          v-for="(item, index) in bottomNavItems"
+          :key="index"
+        >
+          <span>{{ item.title }}</span>
+
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-btn>
+      </v-bottom-navigation>
     </v-main>
   </v-app>
 </template>
@@ -17,7 +32,12 @@ export default {
   },
 
   data: () => ({
-    //
+    bottomNavItems: [
+      { title: "Ana Sayfa", icon: "mdi-home-variant" },
+      { title: "Shorts", icon: "mdi-youtube-tv" },
+      { title: "Abonelikler", icon: "mdi-youtube-subscription" },
+      { title: "Youtube Music", icon: "mdi-cast-audio-variant" },
+    ],
   }),
 };
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <v-toolbar class="sub-header ml-2" height="56" elevation="0">
+    <v-toolbar class="sub-header pl-4" height="56" elevation="0">
       <v-btn
-        v-for="item in subHeaderItems"
-        :key="item"
+        v-for="(item, index) in subHeaderItems"
+        :key="index"
         class="sub-header-btn"
         shaped
         small
@@ -11,23 +11,18 @@
         {{ item.categoryName }}</v-btn
       >
     </v-toolbar>
+
     <div class="contents pt-6">
-      <v-row>
+      <v-row class="mx-2" no-gutters>
         <v-col
           v-for="(item, index) in videoItems"
           :key="index"
-          :class="{
-            'col-lg':
-              $vuetify.breakpoint.width > 1450 &&
-              $vuetify.breakpoint.width <= 1870,
-            'col-md':
-              $vuetify.breakpoint.width <= 1450 &&
-              $vuetify.breakpoint.width > 953,
-            'col-sm':
-              $vuetify.breakpoint.width <= 953 &&
-              $vuetify.breakpoint.width > 655,
-            'col-xs': $vuetify.breakpoint.width <= 655,
-          }"
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
+          xl="2"
+          class="px-2 pb-2"
         >
           <VideoCart
             :imgUrl="item.imgUrl"
@@ -58,7 +53,7 @@ export default {
           imgUrl: "https://cdn.vuetifyjs.com/images/cards/cooking.png",
           avatarUrl:
             "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light",
-          videoTitle: "Video Title - Video Title - Video Title -Video Title",
+          videoTitle: "Video Title - Video Title - Video Title -Video Title - ",
           channelName: "Channel 2",
           videoViews: "439 görüntülenme",
           time: "8 saat önce",

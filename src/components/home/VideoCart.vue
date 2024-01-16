@@ -1,13 +1,13 @@
 <template>
   <div class="video-cart pa-0">
     <v-card elevation="0">
-      <v-img height="174.58" :src="imgUrl"></v-img>
+      <v-img height="60%" :src="imgUrl"></v-img>
       <v-list-item>
         <v-list-item-avatar height="36" min-width="36" width="36">
           <v-img class="elevation-6" alt="" :src="avatarUrl"></v-img>
         </v-list-item-avatar>
 
-        <v-list-item-content>
+        <v-list-item-content class="pr-md-2 py-0">
           <h3 class="video-title">
             <a href="#">
               {{ videoTitle }}
