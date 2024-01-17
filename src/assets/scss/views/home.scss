@@ -40,6 +40,13 @@
       justify-content: flex-start;
       width: 100%;
 
+      @media (min-width: 1904px) {
+        .col-xl-auto {
+          flex: 0 0 20%;
+          max-width: 20%;
+        }
+      }
+
       .col {
         width: auto;
         //max-height: 294.58px;

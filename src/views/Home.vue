@@ -14,25 +14,32 @@
 
     <div class="contents pt-6">
       <v-row class="mx-2" no-gutters>
-        <v-col
-          v-for="(item, index) in videoItems"
-          :key="index"
-          cols="12"
-          sm="6"
-          md="4"
-          lg="3"
-          xl="2"
-          class="px-2 pb-2"
-        >
-          <VideoCart
-            :imgUrl="item.imgUrl"
-            :avatarUrl="item.avatarUrl"
-            :videoTitle="item.videoTitle"
-            :channelName="item.channelName"
-            :videoViews="item.videoViews"
-            :time="item.time"
-          ></VideoCart>
-        </v-col>
+        <template v-for="(item, index) in videoItems">
+          <v-col
+            :key="index"
+            cols="12"
+            sm="6"
+            md="4"
+            lg="3"
+            xl="auto"
+            class="px-2 pb-2"
+          >
+            <VideoCart
+              :imgUrl="item.imgUrl"
+              :avatarUrl="item.avatarUrl"
+              :videoTitle="item.videoTitle"
+              :channelName="item.channelName"
+              :videoViews="item.videoViews"
+              :time="item.time"
+            ></VideoCart>
+          </v-col>
+          <v-responsive
+            v-if="(index + 1) % 5 === 0"
+            :key="`width-${index}`"
+            class="hidden-lg-and-down"
+            width="100%"
+          ></v-responsive>
+        </template>
       </v-row>
     </div>
   </div>
