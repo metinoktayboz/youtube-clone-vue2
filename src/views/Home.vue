@@ -16,12 +16,18 @@
       <v-row class="mx-2" no-gutters>
         <template v-for="(item, index) in videoItems">
           <v-col
+            v-if="$vuetify.breakpoint.xlOnly && index % 5 === 0"
+            :key="`FirstColumnOffset-${index}`"
+            cols="1"
+          ></v-col>
+
+          <v-col
             :key="index"
             cols="12"
             sm="6"
             md="4"
             lg="3"
-            xl="auto"
+            xl="2"
             class="px-2 pb-2"
           >
             <VideoCart
@@ -33,12 +39,12 @@
               :time="item.time"
             ></VideoCart>
           </v-col>
-          <v-responsive
-            v-if="(index + 1) % 5 === 0"
-            :key="`width-${index}`"
-            class="hidden-lg-and-down"
-            width="100%"
-          ></v-responsive>
+
+          <v-col
+            v-if="$vuetify.breakpoint.xlOnly && (index + 1) % 5 === 0"
+            :key="`LastColumnOffset-${index}`"
+            cols="1"
+          ></v-col>
         </template>
       </v-row>
     </div>
@@ -52,6 +58,9 @@ export default {
   name: "Home",
   components: {
     VideoCart,
+  },
+  mounted() {
+    console.log(this.$vuetify);
   },
   data() {
     return {

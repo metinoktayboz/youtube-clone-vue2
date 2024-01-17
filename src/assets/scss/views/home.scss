@@ -40,19 +40,12 @@
       justify-content: flex-start;
       width: 100%;
 
-      @media (min-width: 1904px) {
-        .col-xl-auto {
-          flex: 0 0 20%;
-          max-width: 20%;
-        }
-      }
-
-      .col {
-        width: auto;
-        //max-height: 294.58px;
-        margin: 0 8px 40px 8px;
-        padding: 0;
-      }
+      //.col {
+      //  width: auto;
+      //  //max-height: 294.58px;
+      //  margin: 0 8px 40px 8px;
+      //  padding: 0;
+      //}
 
       /*@media (max-width: 1870px) {
         .col {
