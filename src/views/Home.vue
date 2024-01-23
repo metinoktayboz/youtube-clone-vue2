@@ -13,21 +13,20 @@
     </v-toolbar>
 
     <div class="contents pt-6">
-      <v-row class="mx-2" no-gutters>
-        <template v-for="(item, index) in videoItems">
-          <v-col
-            v-if="$vuetify.breakpoint.xlOnly && index % 5 === 0"
-            :key="`FirstColumnOffset-${index}`"
-            cols="1"
-          ></v-col>
-
+      <v-row
+        v-for="(_rowNo, rowIndex) in getRowNumber"
+        :key="rowIndex"
+        class="mx-2"
+        no-gutters
+      >
+        <template v-for="(item, index) in getVideoItemsPerRow(rowIndex)">
           <v-col
             :key="index"
             cols="12"
             sm="6"
             md="4"
             lg="3"
-            xl="2"
+            xl=""
             class="px-2 pb-2"
           >
             <VideoCart
@@ -39,12 +38,6 @@
               :time="item.time"
             ></VideoCart>
           </v-col>
-
-          <v-col
-            v-if="$vuetify.breakpoint.xlOnly && (index + 1) % 5 === 0"
-            :key="`LastColumnOffset-${index}`"
-            cols="1"
-          ></v-col>
         </template>
       </v-row>
     </div>
@@ -58,9 +51,6 @@ export default {
   name: "Home",
   components: {
     VideoCart,
-  },
-  mounted() {
-    console.log(this.$vuetify);
   },
   data() {
     return {
@@ -187,7 +177,23 @@ export default {
         { categoryName: "Category 8" },
         { categoryName: "Category 9" },
       ],
+      itemNumberPerRow: 5,
     };
+  },
+  computed: {
+    getRowNumber() {
+      return Math.ceil(this.videoItems.length / this.itemNumberPerRow);
+    },
+  },
+  methods: {
+    getVideoItemsPerRow(rowIndex) {
+      const startIndex = rowIndex * this.itemNumberPerRow;
+
+      return this.videoItems.slice(
+        startIndex,
+        startIndex + this.itemNumberPerRow
+      );
+    },
   },
 };
 </script>

@@ -1,7 +1,10 @@
 <template>
   <div class="video-cart pa-0">
     <v-card elevation="0">
-      <v-img height="60%" :src="imgUrl"></v-img>
+      <div
+        :style="{ 'background-image': `url(${imgUrl})` }"
+        style="height: 60%"
+      ></div>
       <v-list-item>
         <v-list-item-avatar height="36" min-width="36" width="36">
           <v-img class="elevation-6" alt="" :src="avatarUrl"></v-img>
