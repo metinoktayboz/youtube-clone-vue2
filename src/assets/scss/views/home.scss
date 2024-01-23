@@ -1,5 +1,4 @@
 .home {
-  //background-color: #0f0f0f;
   height: 100%;
 
   .sub-header {
@@ -39,40 +38,6 @@
       display: flex;
       justify-content: flex-start;
       width: 100%;
-
-      .col {
-        width: auto;
-        //max-height: 294.58px;
-        margin: 0 8px 40px 8px;
-        padding: 0;
-      }
-
-      /*@media (max-width: 1870px) {
-        .col {
-          flex: 23%;
-          max-width: 24%;
-        }
-      }
-
-      @media (max-width: 1450px) {
-        .col {
-          flex: 100%;
-          max-width: 32%;
-        }
-      }
-      @media (max-width: 953px) {
-        .col {
-          flex: 100%;
-          max-width: 47%;
-        }
-      }
-
-      @media (max-width: 655px) {
-        .col {
-          flex: 100%;
-          max-width: 94%;
-        }
-      }*/
     }
   }
 }

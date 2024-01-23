@@ -3,7 +3,14 @@
     <v-app-bar app elevation="0" dark height="56" clipped-left>
       <div class="header">
         <v-col class="left-header">
-          <v-app-bar-nav-icon @click="mini = !mini"></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon
+            v-if="!isTemporary"
+            @click="mini = !mini"
+          ></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon
+            v-else
+            @click="drawer = !drawer"
+          ></v-app-bar-nav-icon>
 
           <v-toolbar-title>
             <router-link to="/" tag="span" style="cursor: pointer"
@@ -49,6 +56,7 @@
       </div>
     </v-app-bar>
     <v-navigation-drawer
+      v-model="drawer"
       :mini-variant.sync="mini"
       class="no-transition hidden-xs-only"
       permanent
@@ -152,17 +160,130 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
+    <v-navigation-drawer
+      v-if="isTemporary"
+      v-model="drawer"
+      temporary
+      clipped
+      dark
+      app
+      width="240"
+      floating
+    >
+      <v-list class="open-list" dense rounded>
+        <v-list-item class="drawer-list-item mb-2 pb-2" link>
+          <v-list-item-content>
+            <v-list-item-icon>
+              <v-icon @click.stop="drawer = !drawer"> mdi-menu </v-icon>
+            </v-list-item-icon>
+            <router-link
+              to="/"
+              tag="span"
+              class="title-youtube"
+              style="cursor: pointer"
+              >YouTube</router-link
+            >
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          class="drawer-list-item"
+          v-for="item in itemsOpen"
+          :key="item.title"
+          link
+        >
+          <v-list-item-content>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+            <span class="item-title-large">{{ item.title }}</span>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-divider class="mt-3 pt-3"></v-divider>
+
+        <v-list-item class="drawer-list-item" link>
+          <v-list-item-content>
+            <span class="title-siz pr-2"> Siz </span>
+            <v-list-item-icon>
+              <v-icon class="chevron-right">mdi-chevron-right</v-icon>
+            </v-list-item-icon>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          class="drawer-list-item"
+          v-for="item in shownItems"
+          :key="item.title"
+          link
+        >
+          <v-list-item-content>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+            <span class="item-title-large">{{ item.title }}</span>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          class="drawer-list-item"
+          @click="expandOrCollapseYouItems"
+          link
+        >
+          <v-list-item-content v-if="!isExpanded">
+            <v-list-item-icon>
+              <v-icon>mdi-chevron-down</v-icon>
+            </v-list-item-icon>
+            <span class="item-title-large">Daha fazla göster</span>
+          </v-list-item-content>
+          <v-list-item-content v-if="isExpanded">
+            <v-list-item-icon>
+              <v-icon>mdi-chevron-up</v-icon>
+            </v-list-item-icon>
+            <span class="item-title-large">Daha az göster</span>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-divider class="mt-3 pt-3"></v-divider>
+
+        <v-list-item class="subs-title">
+          <v-list-item-content class="subs">
+            <span class="title-siz"> Abonelikler </span>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          class="drawer-list-item"
+          v-for="item in subs"
+          :key="item.title"
+          link
+        >
+          <v-list-item-content>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+            <span class="item-title-large">{{ item.title }}</span>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </div>
 </template>
 
 <script>
 export default {
   name: "Header",
-
+  computed: {
+    temporaryBreakpoint() {
+      return 1331;
+    },
+  },
   data() {
     return {
-      drawer: false,
+      drawer: null,
       mini: false,
+      isTemporary: false,
       isExpanded: true,
       dynamicWidth: window.innerWidth,
       itemsClosed: [
@@ -222,8 +343,12 @@ export default {
 
   watch: {
     dynamicWidth() {
-      if (window.innerWidth <= 1331) {
+      if (window.innerWidth <= this.temporaryBreakpoint) {
         this.mini = true;
+        this.isTemporary = true;
+      } else {
+        this.isTemporary = false;
+        this.drawer = false;
       }
     },
   },

@@ -21,4 +21,10 @@
   /* Refer to MDN Web Docs for more information */
   scrollbar-width: thin;
   scrollbar-color: #888 inherit;
+
+  @media (max-width: 600px) {
+    .v-main {
+      padding-left: 12px !important;
+    }
+  }
 }

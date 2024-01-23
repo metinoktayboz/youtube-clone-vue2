@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Header></Header>
-    <v-main :class="{ 'pl-3': $vuetify.breakpoint.width < 600 }">
+    <v-main>
       <router-view />
       <v-bottom-navigation
         class="align-center justify-space-around hidden-sm-and-up"
